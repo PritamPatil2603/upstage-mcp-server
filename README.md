@@ -21,7 +21,7 @@ Before using this server, you'll need:
 2. **Python 3.10+**: The server requires Python 3.10 or higher.
 3. **uv package manager**: For dependency management and installation.
 
-## 🚀 Installation for Team Members
+## 🚀 Local/Dev Setup Instructions
 
 ### Step 1: Clone the Repository
 
