@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "upstage-mcp-server"
+version = "0.1.0"
+description = "An MCP server for Upstage document parsing"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"  # Simplified format
+authors = [
+    {name = "Pritam Patil", email = "pritam1998patil@gmail.com"}
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "mcp[cli]>=1.6.0",
+    "httpx>=0.24.0",
+    "python-dotenv>=1.0.0"
+]
+
+[project.scripts]
+upstage-mcp = "upstage_mcp.server:main"
+
+[tool.setuptools]
+packages = ["upstage_mcp"]
