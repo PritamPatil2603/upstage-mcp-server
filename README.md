@@ -42,33 +42,18 @@ pip install uv
 # Create and activate a virtual environment
 uv venv
 
-# On Windows:
-.venv\Scripts\activate
+```bash
+# Windows
+# .venv\Scripts\activate
 
-# On macOS/Linux:
+# macOS/Linux
 source .venv/bin/activate
 
 # Install dependencies in editable mode
 uv pip install -e .
 ```
 
-### Step 3: Set Up API Key
-
-You can set the Upstage API key in two ways:
-
-1. **Using Environment Variables:**
-
-   ```bash
-   # On Windows
-   set UPSTAGE_API_KEY=your_api_key_here
-
-   # On macOS/Linux
-   export UPSTAGE_API_KEY=your_api_key_here
-   ```
-
-2. Add Upstage API key directly in the below claude_desktop_config.json file.
-
-### Step 4: Configure Claude Desktop
+### Step 3: Configure Claude Desktop
 
 1. **Download Claude Desktop:**
    - [Download Claude Desktop](https://claude.ai/download)
@@ -76,14 +61,16 @@ You can set the Upstage API key in two ways:
 2. **Open Claude Desktop:**
    - Navigate to **Claude → Settings → Developer → Edit Config**
 
+
 3. **Edit `claude_desktop_config.json`:**
 
    Add the following configuration:
 
+   **For Windows:**
    ```json
    {
      "mcpServers": {
-       "upstage-document-parser": {
+       "upstage-mcp-server": {
          "command": "uv",
          "args": [
            "run",
@@ -99,11 +86,39 @@ You can set the Upstage API key in two ways:
        }
      }
    }
+
+   Replace the `C:\\path\\to\\cloned\\upstage-mcp-server` with the actual repository path on your system.
+
+**For macOS/Linux:**
+   ```json
+   {
+     "mcpServers": {
+       "upstage-mcp-server": {
+         "command": "/Users/username/.local/bin/uv",
+         "args": [
+           "run",
+           "--directory",
+           "/path/to/cloned/upstage-mcp-server",
+           "python",
+           "-m",
+           "upstage_mcp.server"
+         ],
+         "env": {
+           "UPSTAGE_API_KEY": "your_api_key_here"
+         }
+       }
+     }
+   }
    ```
 
-   Replace the `C:\\path\\to\\cloned\\upstage-mcp-server` with the actual repository path. (Use forward slashes `/` if you are on macOS/Linux.)
+   Replace the following:
+   - `/Users/username/.local/bin/uv` with the full path to your uv executable (find it using `which uv`)
+   - `/path/to/cloned/upstage-mcp-server` with the absolute path to your repository
 
-4. **Restart Claude Desktop**
+   > **Tip for macOS/Linux users:** If you're experiencing connection issues, using the full path to the uv executable is often more reliable than just `uv`. Find the path using `which uv` in your terminal.
+
+4. **Once above  steps are completed, please restart Claude Desktop**
+
 
 ## 🛠️ Available Tools
 
@@ -150,8 +165,8 @@ The server saves processing results in these locations:
 
 Claude Desktop logs can be found at:
 
-- **Windows:** `%APPDATA%\Claude\logs\mcp-server-upstage-document-parser.log`
-- **macOS:** `~/Library/Logs/Claude/mcp-server-upstage-document-parser.log`
+- **Windows:** `%APPDATA%\Claude\logs\mcp-server-upstage-mcp-server.log`
+- **macOS:** `~/Library/Logs/Claude/mcp-server-upstage-mcp-server.log`
 
 ## 🤝 Contributing
 
