@@ -42,11 +42,10 @@ pip install uv
 # Create and activate a virtual environment
 uv venv
 
-```bash
-# Windows
+# Activate the virtual environment
+# On Windows, run:
 # .venv\Scripts\activate
-
-# macOS/Linux
+# On macOS/Linux, run:
 source .venv/bin/activate
 
 # Install dependencies in editable mode
