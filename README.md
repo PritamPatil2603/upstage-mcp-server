@@ -86,7 +86,7 @@ uv pip install -e .
      }
    }
 
-   Replace the `C:\\path\\to\\cloned\\upstage-mcp-server` with the actual repository path on your system.
+Replace the `C:\\path\\to\\cloned\\upstage-mcp-server` with the actual repository path on your system.
 
 **For macOS/Linux:**
    ```json
