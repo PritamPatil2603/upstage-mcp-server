@@ -20,11 +20,7 @@ API_KEY = os.environ.get("UPSTAGE_API_KEY")
 if not API_KEY:
     raise ValueError("UPSTAGE_API_KEY not set in environment variables")
 
-# Create MCP server with the correct name
-mcp = FastMCP(
-    "upstage-mcp-server",  # Corrected from "upstage-ai-tools" to "upstage-mcp-server"
-    dependencies=["mcp", "httpx", "python-dotenv"]
-)
+mcp = FastMCP("upstage-mcp-server")
 
 # Create output directories
 document_parser.setup_output_directories()
