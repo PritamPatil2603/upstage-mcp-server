@@ -42,11 +42,10 @@ pip install uv
 # Create and activate a virtual environment
 uv venv
 
-```bash
-# Windows
+# Activate the virtual environment
+# On Windows, run:
 # .venv\Scripts\activate
-
-# macOS/Linux
+# On macOS/Linux, run:
 source .venv/bin/activate
 
 # Install dependencies in editable mode
@@ -87,7 +86,7 @@ uv pip install -e .
      }
    }
 
-   Replace the `C:\\path\\to\\cloned\\upstage-mcp-server` with the actual repository path on your system.
+Replace the `C:\\path\\to\\cloned\\upstage-mcp-server` with the actual repository path on your system.
 
 **For macOS/Linux:**
    ```json
