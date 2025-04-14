@@ -1,5 +1,3 @@
----
-
 ```markdown
 # Upstage MCP Server
 
@@ -252,6 +250,3 @@ Contributions are welcome! If you wish to enhance the project or add new feature
 
 This project is licensed under the MIT License.
 ```
-
----
-
