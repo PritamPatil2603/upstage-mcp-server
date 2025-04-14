@@ -21,6 +21,83 @@ Before using this server, you'll need:
 2. **Python 3.10+**: The server requires Python 3.10 or higher.
 3. **uv package manager**: For dependency management and installation.
 
+```markdown
+## Installation Options
+
+### Using pip
+
+Install directly from PyPI:
+
+```bash
+pip install upstage-mcp-server
+```
+
+### Using `uv` (Recommended)
+
+If you're using UV as your Python package manager:
+
+```bash
+uv pip install upstage-mcp-server
+```
+
+Or execute directly with `uvx`:
+
+```bash
+uvx upstage-mcp-server
+```
+
+## Configure Claude Desktop
+
+For integration with Claude Desktop, add the following configuration to your `claude_desktop_config.json`:
+
+**Location:**
+- **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
+- **macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`
+
+### Option 1: Using `uvx` Command (Recommended)
+
+```json
+{
+   "mcpServers": {
+      "upstage-mcp-server": {
+         "command": "uvx",
+         "args": ["upstage-mcp-server"],
+         "env": {
+           "UPSTAGE_API_KEY": "<your-api-key>"
+         }
+      }
+   }
+}
+```
+
+### Option 2: Using Python Module
+
+```json
+{
+   "mcpServers": {
+      "upstage-mcp-server": {
+         "command": "python",
+         "args": ["-m", "upstage_mcp.server"],
+         "env": {
+           "UPSTAGE_API_KEY": "<your-api-key>"
+         }
+      }
+   }
+}
+```
+
+After updating the configuration, restart Claude Desktop for the changes to take effect.
+
+## Output Directories
+
+The package saves processing results in these locations in your home directory:
+
+- **Document Parsing Results:** `~/.upstage-mcp-server/outputs/document_parsing/`
+- **Information Extraction Results:** `~/.upstage-mcp-server/outputs/information_extraction/`
+- **Generated Schemas:** `~/.upstage-mcp-server/outputs/information_extraction/schemas/`
+```
+
+
 ## 🚀 Local/Dev Setup Instructions
 
 ### Step 1: Clone the Repository
