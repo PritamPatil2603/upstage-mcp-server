@@ -1,114 +1,122 @@
+---
+
 ```markdown
 # Upstage MCP Server
 
 > A Model Context Protocol (MCP) server for Upstage AI's document digitization and information extraction capabilities
 
-## 📋 Overview
+## Overview
 
-The Upstage MCP Server provides a bridge between AI assistants and Upstage AI's powerful document processing APIs. This server enables AI models like Claude to seamlessly extract and structure content from various document types including PDFs, images, and Office files.
+The Upstage MCP Server provides a robust bridge between AI assistants and Upstage AI’s powerful document processing APIs. This server enables AI models—such as Claude—to effortlessly extract and structure content from various document types including PDFs, images, and Office files. The package supports multiple formats and comes with seamless integration options for Claude Desktop.
 
-## ✨ Key Features
+## Key Features
 
-- **Document Digitization**: Extract structured content from documents while preserving layout.
-- **Information Extraction**: Extract specific data points based on intelligent schemas.
-- **Multi-format Support**: JPEG, PNG, BMP, PDF, TIFF, HEIC, DOCX, PPTX, XLSX.
-- **Claude Desktop Integration**: Seamless integration with Claude and other MCP clients.
+- **Document Digitization:** Extract structured content from documents while preserving layout.
+- **Information Extraction:** Retrieve specific data points using intelligent, customizable schemas.
+- **Multi-format Support:** Handles JPEG, PNG, BMP, PDF, TIFF, HEIC, DOCX, PPTX, and XLSX.
+- **Claude Desktop Integration:** Effortlessly connect with Claude and other MCP clients.
 
-## 🔑 Prerequisites
+## Prerequisites
 
-Before using this server, you'll need:
+Before using this server, ensure you have the following:
 
-1. **Upstage API Key**: Obtain your API key from [Upstage API](https://console.upstage.ai/api-keys?api=document-parsing)
-2. **Python 3.10+**: The server requires Python 3.10 or higher.
-3. **uv package manager** : For dependency management and installation. Install it using `pip install uv`
+1. **Upstage API Key:** Obtain your API key from [Upstage API](https://console.upstage.ai/api-keys?api=document-parsing).
+2. **Python 3.10+:** The server requires Python version 3.10 or higher.
+3. **uv Package Manager:** For dependency management and execution. Install it via:
+   ```bash
+   pip install uv
+   ```
 
-## 📦 Installation Options
-
-### Using pip
-
-Install directly from PyPI:
-
-```bash
-pip install upstage-mcp-server
-```
+## Installation Options
 
 ### Using uv (Recommended)
 
-If you're using UV as your Python package manager:
+`uvx` streamlines execution, so no additional installation is required in most cases. For a direct installation via uv:
 
 ```bash
 uv pip install upstage-mcp-server
 ```
 
-Or execute directly with `uvx`:
+Alternatively, execute directly with `uvx`:
 
 ```bash
 uvx upstage-mcp-server
 ```
 
-## 🔧 Configure Claude Desktop
+### Using pip
 
-For integration with Claude Desktop, add the following configuration to your `claude_desktop_config.json`:
+To install directly from PyPI:
 
-**Location:**
+```bash
+pip install upstage-mcp-server
+```
+
+## Configure Claude Desktop
+
+To integrate with Claude Desktop, update your `claude_desktop_config.json` accordingly.
+
+### Configuration Location
+
 - **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
 - **macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`
 
-### Option 1: Using `uvx` Command (Recommended)
+### Option 1: Using uvx Command (Recommended)
 
 ```json
 {
-   "mcpServers": {
-      "upstage-mcp-server": {
-         "command": "uvx",
-         "args": ["upstage-mcp-server"],
-         "env": {
-           "UPSTAGE_API_KEY": "<your-api-key>"
-         }
+  "mcpServers": {
+    "upstage-mcp-server": {
+      "command": "uvx",
+      "args": ["upstage-mcp-server"],
+      "env": {
+        "UPSTAGE_API_KEY": "<your-api-key>"
       }
-   }
+    }
+  }
 }
 ```
 
-### Option 2: Using Python Module
+### Option 2: Using the Python Module
 
 ```json
 {
-   "mcpServers": {
-      "upstage-mcp-server": {
-         "command": "python",
-         "args": ["-m", "upstage_mcp.server"],
-         "env": {
-           "UPSTAGE_API_KEY": "<your-api-key>"
-         }
+  "mcpServers": {
+    "upstage-mcp-server": {
+      "command": "python",
+      "args": ["-m", "upstage_mcp.server"],
+      "env": {
+        "UPSTAGE_API_KEY": "<your-api-key>"
       }
-   }
+    }
+  }
 }
 ```
 
-After updating the configuration, restart Claude Desktop for the changes to take effect.
+After applying the configuration, restart Claude Desktop for the changes to take effect.
 
-## 📂 Output Directories
+## Output Directories
 
-The package saves processing results in these locations in your home directory:
+Processing results are stored in your home directory under:
 
-- **Document Parsing Results:** `~/.upstage-mcp-server/outputs/document_parsing/`
-- **Information Extraction Results:** `~/.upstage-mcp-server/outputs/information_extraction/`
-- **Generated Schemas:** `~/.upstage-mcp-server/outputs/information_extraction/schemas/`
+- **Document Parsing Results:**  
+  `~/.upstage-mcp-server/outputs/document_parsing/`
+- **Information Extraction Results:**  
+  `~/.upstage-mcp-server/outputs/information_extraction/`
+- **Generated Schemas:**  
+  `~/.upstage-mcp-server/outputs/information_extraction/schemas/`
 
-## 🚀 Local/Dev Setup Instructions
+## Local/Development Setup
+
+Follow these steps to set up and run the project locally:
 
 ### Step 1: Clone the Repository
 
 ```bash
-# Clone the repository
 git clone https://github.com/PritamPatil2603/upstage-mcp-server.git
-
-# Navigate to the project directory
 cd upstage-mcp-server
 ```
 
-### Step 2: Set Up Python Environment
+### Step 2: Set Up the Python Environment
 
 ```bash
 # Install uv if not already installed
@@ -118,26 +126,23 @@ pip install uv
 uv venv
 
 # Activate the virtual environment
-# On Windows, run:
-.venv\Scripts\activate
-# On macOS/Linux, run:
+# On Windows:
+# .venv\Scripts\activate
+# On macOS/Linux:
 source .venv/bin/activate
 
 # Install dependencies in editable mode
 uv pip install -e .
 ```
 
-### Step 3: Configure Claude Desktop for Development
+### Step 3: Configure Claude Desktop for Local Testing
 
-1. **Download Claude Desktop:**
-   - [Download Claude Desktop](https://claude.ai/download)
+1. **Download Claude Desktop:**  
+   [Download Claude Desktop](https://claude.ai/download)
 
-2. **Open Claude Desktop:**
-   - Navigate to **Claude → Settings → Developer → Edit Config**
-
-3. **Edit `claude_desktop_config.json`:**
-
-   Add the following configuration:
+2. **Open and Edit Configuration:**
+   - Navigate to **Claude → Settings → Developer → Edit Config**.
+   - Edit the `claude_desktop_config.json` file with the following configurations:
 
    **For Windows:**
    ```json
@@ -160,8 +165,7 @@ uv pip install -e .
      }
    }
    ```
-
-   Replace the `C:\\path\\to\\cloned\\upstage-mcp-server` with the actual repository path on your system.
+   Replace `C:\\path\\to\\cloned\\upstage-mcp-server` with your actual repository path.
 
    **For macOS/Linux:**
    ```json
@@ -184,62 +188,70 @@ uv pip install -e .
      }
    }
    ```
+   Replace:
+   - `/Users/username/.local/bin/uv` with the output of `which uv`.
+   - `/path/to/cloned/upstage-mcp-server` with the absolute path to your local clone.
 
-   Replace the following:
-   - `/Users/username/.local/bin/uv` with the full path to your uv executable (find it using `which uv`)
-   - `/path/to/cloned/upstage-mcp-server` with the absolute path to your repository
+> **Tip for macOS/Linux users:** If connection issues occur, using the full path to your uv executable can improve reliability.
 
-   > **Tip for macOS/Linux users:** If you're experiencing connection issues, using the full path to the uv executable is often more reliable than just `uv`. Find the path using `which uv` in your terminal.
+After configuring, restart Claude Desktop.
 
-4. **Once above steps are completed, please restart Claude Desktop**
+## Available Tools
 
-## 🛠️ Available Tools
-
-The server exposes two main tools for AI models:
+The server exposes two primary tools for AI models:
 
 1. **Document Parsing (`parse_document`):**
-   - **Description**: Processes documents and extracts their content with structure preservation.
-   - **Parameters**:
-     - `file_path`: Path to the document file to be processed.
-     - `output_formats` (optional): Output formats (e.g., 'html', 'text', 'markdown').
-   - **Example Query to Claude:**
-     > Can you parse this document located at "C:\Users\username\Documents\contract.pdf" and summarize its contents?
+   - **Description:** Processes documents and extracts content while preserving structure.
+   - **Parameter:**  
+     `file_path` – the path to the document to be processed.
+   - **Example Query:**  
+     *"Can you parse the document at `C:\Users\username\Documents\contract.pdf` and provide a summary?"*
 
 2. **Information Extraction (`extract_information`):**
-   - **Description**: Extracts structured information from documents according to schemas.
-   - **Parameters**:
-     - `file_path`: Path to the document file to process.
-     - `schema_path` (optional): Path to a JSON file containing the extraction schema.
-     - `schema_json` (optional): JSON string containing the extraction schema.
-     - `auto_generate_schema` (default: true): Whether to automatically generate a schema.
-   - **Example Query to Claude:**
-     > Extract the invoice number, date, and total amount from this document at "C:\Users\username\Documents\invoice.pdf".
+   - **Description:** Extracts structured information from documents based on predefined or auto-generated schemas.
+   - **Parameters:**  
+     `file_path` – the document file path;  
+     `schema_path` (optional) – a JSON file with an extraction schema;  
+     `auto_generate_schema` (default true) – whether to auto-generate a schema.
+   - **Example Query:**  
+     *"Extract the invoice number, date, and total from `C:\Users\username\Documents\invoice.pdf`."*
 
-## 🔧 Troubleshooting
+## Output Files
+
+Processed outputs are saved at:
+
+- **Document Parsing Results:** `~/.upstage-mcp-server/outputs/document_parsing/`
+- **Information Extraction Results:** `~/.upstage-mcp-server/outputs/information_extraction/`
+- **Generated Schemas:** `~/.upstage-mcp-server/outputs/information_extraction/schemas/`
+
+## Troubleshooting
 
 ### Common Issues
 
-- **API Key Not Found:**  
-  Ensure your Upstage API key is correctly set in environment variables or the `.env` file.
-  
+- **API Key Missing:**  
+  Ensure that your Upstage API key is set in the environment variables or in a `.env` file.
 - **File Not Found:**  
-  Verify that the file path is correct and accessible to the server.
-  
+  Double-check the file path for correctness and accessibility.
 - **Server Not Starting:**  
-  Check if you've activated the virtual environment and installed all dependencies.
+  Verify that your virtual environment is activated and all dependencies are installed.
 
-### Checking Logs
+### Log Files
 
-Claude Desktop logs can be found at:
+For troubleshooting, view the server logs at:
 
-- **Windows:** `%APPDATA%\Claude\logs\mcp-server-upstage-mcp-server.log`
-- **macOS:** `~/Library/Logs/Claude/mcp-server-upstage-mcp-server.log`
+- **Windows:**  
+  `%APPDATA%\Claude\logs\mcp-server-upstage-mcp-server.log`
+- **macOS:**  
+  `~/Library/Logs/Claude/mcp-server-upstage-mcp-server.log`
 
-## 🤝 Contributing
+## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request to enhance the project or add new features.
+Contributions are welcome! If you wish to enhance the project or add new features, please fork the repository and submit a pull request. For major changes, please open an issue first to discuss what you would like to change.
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License.
 ```
+
+---
+
