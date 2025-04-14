@@ -1,4 +1,4 @@
-```markdown
+
 # Upstage MCP Server
 
 > A Model Context Protocol (MCP) server for Upstage AI's document digitization and information extraction capabilities
@@ -23,7 +23,6 @@ Before using this server, ensure you have the following:
 3. **uv Package Manager:** For dependency management and execution. Install it via:
    ```bash
    pip install uv
-   ```
 
 ## Installation Options
 
