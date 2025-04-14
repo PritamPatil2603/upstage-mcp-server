@@ -95,11 +95,10 @@ The package saves processing results in these locations in your home directory:
 - **Document Parsing Results:** `~/.upstage-mcp-server/outputs/document_parsing/`
 - **Information Extraction Results:** `~/.upstage-mcp-server/outputs/information_extraction/`
 - **Generated Schemas:** `~/.upstage-mcp-server/outputs/information_extraction/schemas/`
-```
 
 
 ## 🚀 Local/Dev Setup Instructions
-
+```
 ### Step 1: Clone the Repository
 
 ```bash
