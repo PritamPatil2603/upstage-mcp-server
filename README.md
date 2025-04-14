@@ -19,7 +19,7 @@ Before using this server, you'll need:
 
 1. **Upstage API Key**: Obtain your API key from [Upstage API](https://console.upstage.ai/api-keys?api=document-parsing)
 2. **Python 3.10+**: The server requires Python 3.10 or higher.
-3. **uv package manager**: For dependency management and installation.
+3. **uv package manager**: For dependency management and installation. **(install it using pip install uv)**
 
 ```markdown
 ## Installation Options
