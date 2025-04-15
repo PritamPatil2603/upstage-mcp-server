@@ -20,8 +20,7 @@ Before using this server, ensure you have the following:
 
 1. **Upstage API Key:** Obtain your API key from [Upstage API](https://console.upstage.ai/api-keys?api=document-parsing).
 2. **Python 3.10+:** The server requires Python version 3.10 or higher.
-3. **uv Package Manager:** For dependency management and execution.
-4. The MCP server relies upon Astral UV to run, please [install](https://docs.astral.sh/uv/getting-started/installation/)
+3. The MCP server relies upon **Astral UV** to run, please [install](https://docs.astral.sh/uv/getting-started/installation/)
 
 ## Installation Options
 
