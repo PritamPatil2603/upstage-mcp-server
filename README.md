@@ -22,40 +22,26 @@ Before using this server, ensure you have the following:
 2. **Python 3.10+:** The server requires Python version 3.10 or higher.
 3. The MCP server relies upon **Astral UV** to run, please [install](https://docs.astral.sh/uv/getting-started/installation/)
 
-## Installation Options
+## Installation & Configuration
 
-### Using uv (Recommended)
+This guide provides step-by-step instructions to set up and configure the upstage-mcp-server
 
-`uvx` streamlines execution, so no additional installation is required in most cases. For a direct installation via uv:
+### Using `uv` (Recommended)
 
+No additional installation is required when using `uvx` as it handles execution. However, if you prefer to install the package directly:
 ```bash
-uv pip install upstage-mcp-server
-```
-
-Alternatively, execute directly with `uvx`:
-
-```bash
-uvx upstage-mcp-server
-```
-
-### Using pip
-
-To install directly from PyPI:
-
-```bash
-pip install upstage-mcp-server
+uv pip install uns_mcp
 ```
 
 ## Configure Claude Desktop
-
-To integrate with Claude Desktop, update your `claude_desktop_config.json` accordingly.
+For integration with Claude Desktop, add the following content to your `claude_desktop_config.json`:
 
 ### Configuration Location
 
 - **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
 - **macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`
 
-### Option 1: Using uvx Command (Recommended)
+### Using uvx Command (Recommended)
 
 ```json
 {
@@ -71,23 +57,7 @@ To integrate with Claude Desktop, update your `claude_desktop_config.json` accor
 }
 ```
 
-### Option 2: Using the Python Module
-
-```json
-{
-  "mcpServers": {
-    "upstage-mcp-server": {
-      "command": "python",
-      "args": ["-m", "upstage_mcp.server"],
-      "env": {
-        "UPSTAGE_API_KEY": "<your-api-key>"
-      }
-    }
-  }
-}
-```
-
-After applying the configuration, restart Claude Desktop for the changes to take effect.
+After adding the configuration, restart Claude Desktop to apply the changes.
 
 ## Output Directories
 
@@ -211,20 +181,13 @@ The server exposes two primary tools for AI models:
    - **Example Query:**  
      *"Extract the invoice number, date, and total from `C:\Users\username\Documents\invoice.pdf`."*
 
-## Output Files
-
-Processed outputs are saved at:
-
-- **Document Parsing Results:** `~/.upstage-mcp-server/outputs/document_parsing/`
-- **Information Extraction Results:** `~/.upstage-mcp-server/outputs/information_extraction/`
-- **Generated Schemas:** `~/.upstage-mcp-server/outputs/information_extraction/schemas/`
 
 ## Troubleshooting
 
 ### Common Issues
 
 - **API Key Missing:**  
-  Ensure that your Upstage API key is set in the environment variables or in a `.env` file.
+  Ensure that your Upstage API key is set in the environment variables in a claude_desktop_config.json.
 - **File Not Found:**  
   Double-check the file path for correctness and accessibility.
 - **Server Not Starting:**  
