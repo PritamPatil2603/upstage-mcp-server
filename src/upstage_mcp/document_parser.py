@@ -16,8 +16,7 @@ REQUEST_TIMEOUT = 300  # 5 minutes
 # Setup output directories
 def setup_output_directories() -> tuple:
     """Set up output directories for document parsing results."""
-    package_dir = Path(__file__).parent
-    output_dir = package_dir / "outputs"
+    output_dir = Path.home() / ".upstage-mcp-server" / "outputs"
     doc_parsing_dir = output_dir / "document_parsing"
     
     os.makedirs(doc_parsing_dir, exist_ok=True)

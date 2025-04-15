@@ -26,8 +26,7 @@ SUPPORTED_EXTRACTION_FORMATS: Set[str] = {
 # Setup output directories
 def setup_output_directories() -> tuple:
     """Set up output directories for information extraction results."""
-    package_dir = Path(__file__).parent
-    output_dir = package_dir / "outputs"
+    output_dir = Path.home() / ".upstage-mcp-server" / "outputs"
     info_extraction_dir = output_dir / "information_extraction"
     schemas_dir = info_extraction_dir / "schemas"
     
