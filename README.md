@@ -181,17 +181,35 @@ The server exposes two primary tools for AI models:
    - **Example Query:**  
      *"Extract the invoice number, date, and total from `C:\Users\username\Documents\invoice.pdf`."*
 
+Below is the revised troubleshooting section formatted as requested. You can copy and paste the following Markdown directly into your README:
+
 
 ## Troubleshooting
 
 ### Common Issues
 
 - **API Key Missing:**  
-  Ensure that your Upstage API key is set in the environment variables in a claude_desktop_config.json.
+  Ensure that your UPSTAGE_API_KEY is correctly set in your `claude_desktop_config.json` file. Obtain a valid API key from [Upstage Console](https://console.upstage.ai/api-keys).
+
 - **File Not Found:**  
-  Double-check the file path for correctness and accessibility.
+  Double-check the file path for correctness and accessibility. Ensure that file paths are absolute (e.g., `C:\Users\name\Documents\file.pdf`) and that any special characters in the path are properly escaped.
+
 - **Server Not Starting:**  
-  Verify that your virtual environment is activated and all dependencies are installed.
+  Verify that your virtual environment is activated and all dependencies are installed. Additionally, review the Claude Desktop log files for errors:  
+  - **Windows:** `%APPDATA%\Claude\logs\mcp-server-upstage-mcp-server.log`  
+  - **macOS:** `~/Library/Logs/Claude/mcp-server-upstage-mcp-server.log`
+
+- **Server Connection Issues:**  
+  Restart Claude Desktop. Ensure that `uvx` is installed and available in your system PATH, or use its absolute path in your configuration if needed.
+
+- **Processing Failures:**  
+  Check that the document is in a supported format (PDF, JPEG, PNG, TIFF, etc.), its file size is under 50MB, and it contains fewer than 100 pages. Test with a simpler document to confirm functionality.
+
+- **Invalid Document Format:**  
+  Verify that the document is in a supported, uncorrupted format.
+
+- **Failed to Connect to Upstage API:**  
+  Confirm your network connection, firewall settings, and configuration details in `claude_desktop_config.json`. Review the logs for more detailed error messages.
 
 ### Log Files
 
