@@ -43,6 +43,7 @@ For integration with Claude Desktop, add the following content to your `claude_d
 
 ### Using uvx Command (Recommended)
 
+
 ```json
 {
   "mcpServers": {
@@ -56,6 +57,8 @@ For integration with Claude Desktop, add the following content to your `claude_d
   }
 }
 ```
+
+If `uvx` is not available globally, you may encounter a `Server disconnected` error. To resolve this, run `which uvx` to find its full path, and replace `"command": "uvx"` above with the returned path.
 
 After adding the configuration, restart Claude Desktop to apply the changes.
 
