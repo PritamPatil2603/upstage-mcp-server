@@ -30,7 +30,7 @@ This guide provides step-by-step instructions to set up and configure the upstag
 
 No additional installation is required when using `uvx` as it handles execution. However, if you prefer to install the package directly:
 ```bash
-uv pip install uns_mcp
+uv pip install upstage-mcp-server
 ```
 
 ## Configure Claude Desktop
