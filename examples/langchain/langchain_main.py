@@ -42,7 +42,7 @@ async def main():
     
     # Create an LLM with OpenAI
     model = ChatOpenAI(
-        model="gpt-3.5-turbo",  # You can use gpt-4 for better results
+        model="gpt-4o",  
         temperature=0
     )
     
