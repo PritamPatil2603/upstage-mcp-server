@@ -1,8 +1,8 @@
 """
 LangChain Integration with Upstage MCP Server Example
 
-This example demonstrates how to use LangChain and the MCP adapters
-to work with the Upstage MCP Server for document processing.
+This example demonstrates how to use LangChain with Upstage's Solar LLM
+and the MCP adapters to work with the Upstage MCP Server for document processing.
 """
 
 import os
@@ -10,7 +10,7 @@ import asyncio
 from pathlib import Path
 
 # LangChain imports
-from langchain_openai import ChatOpenAI
+from langchain_upstage import ChatUpstage  
 from langchain.agents import AgentExecutor, create_react_agent
 from langchain_core.prompts import ChatPromptTemplate
 
@@ -20,17 +20,12 @@ from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 
 async def main():
-    # Check for API keys
+    # Check for Upstage API key
     upstage_api_key = os.environ.get("UPSTAGE_API_KEY")
-    openai_api_key = os.environ.get("OPENAI_API_KEY")
     
     if not upstage_api_key:
         upstage_api_key = input("Enter your Upstage API Key: ")
         os.environ["UPSTAGE_API_KEY"] = upstage_api_key
-    
-    if not openai_api_key:
-        openai_api_key = input("Enter your OpenAI API Key: ")
-        os.environ["OPENAI_API_KEY"] = openai_api_key
     
     # Get document path from user
     document_path = input("Enter the path to a document to analyze (PDF, image, or Office file): ")
@@ -40,9 +35,9 @@ async def main():
         print(f"Error: File not found at {document_path}")
         return
     
-    # Create an LLM with OpenAI
-    model = ChatOpenAI(
-        model="gpt-4o",  
+    # Create an LLM with Upstage Solar - using the correct class
+    model = ChatUpstage(
+        model_name="solar-pro",  
         temperature=0
     )
     
